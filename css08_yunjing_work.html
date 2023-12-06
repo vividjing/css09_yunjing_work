@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+         *{
+            margin: 0;
+            padding: 0;
+        }
+        ul li, ol li{
+            list-style: none;
+        }
+/* header部分css */
+.top{
+    width: 100%;
+    height:610px;
+    background: url(https://weatherstack.com/site_images/mountains.svg),linear-gradient(135deg, #1f4e69 0, #164058 100%);
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+}
+.firstcontainer,.weather {
+    width: 1140px;
+    height: 60px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 20px;
+   }
+   .firstcontainer img{
+    width: 202px;
+    height: 28px;
+    vertical-align: middle;
+   }
+   .firstcontainer ul{
+    text-align: center;
+   }
+.firstcontainer ul li{
+    display: inline-block;
+    font-weight: 550;
+    font-size: 13px;
+    margin-right: 20px;
+    line-height: 29px;
+}
+.firstcontainer ul li:nth-child(5)::before{
+    content: "";
+    width:10px;
+    height:10px;
+    border: 1px solid #47c652;
+    background-color: #47c652;
+    border-radius:50%;
+    margin-right: 5px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.firstcontainer ul li:nth-child(6){
+    background: rgba(255,255,255,.15);
+    width: 60px;
+    height: 35px;
+    border-radius: 5px;
+}
+.firstcontainer ul li:nth-child(7){
+    background: #f47b21;;
+    width: 102px;
+    height: 34px;
+    border-radius: 5px;
+    line-height: 34px;
+}
+.weather{
+    margin-top: 40px;
+}
+.weather h2{
+    font-size:30px ;
+    margin-bottom: 20px;
+}
+.weather h4{
+    margin-bottom: 25px;
+}
+.comment{
+    width: 385px;
+    height: 40px;
+    text-align: center;
+    background-color: rgba(255,255,255,.1);
+    border-radius: 17px;
+    margin-bottom: 25px;
+}
+.comment img{
+    vertical-align: middle;
+}
+.comment span{
+    font-size: 16px;
+    line-height: 40px;
+    margin-left: 10px;
+    font-weight: 600;
+}
+.intro button{
+    width: 230px;
+    height: 60px;
+    background-color: #f47b21;
+    border-radius: 3px;
+    border: 0 solid #f47b21;
+    color: white;
+    font-weight: 700;
+    margin-right: 20px;
+}
+.temperature{
+    background-color: #16394c;
+    border: 4px solid #608094;
+    border-radius: 10px;
+    width: 500px;
+    height: 300px;
+
+}
+.location{
+    margin: auto;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 15px;
+}
+.current{
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    margin-top: 15px;
+    height: 100px;
+}
+.sky p{
+    font-weight: 600;
+    font-size: 13px;
+}
+.number{
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 100px;
+}
+.wind{
+    height: 100px;
+    text-align: center;
+}
+.wind span{
+    display: inline-block;
+    line-height: 20px;
+    font-size: 13px;
+    padding-top: 25px;
+}
+.forecast{
+    display: flex;
+    justify-content: space-around;
+    width: 500px;
+    height: 88px;
+    text-align: center;
+    margin-top: 10px;
+    font-size: 13px;
+    font-weight: 500;
+    margin-top: 15px;
+}
+.forecast li{
+    width: 50px;
+    height: 100px;
+    line-height: 35px;
+
+}
+.forecast img{
+    width: 22px;
+    height: 22px;
+}
+        /* 灰色客户部分格式 */
+        .middle1{
+            background-color: #eff2f5;
+            font-size: 14px;
+            /* margin: auto; */
+            height: 136px;
+            /* margin: auto; */
+            text-align: center;
+
+        }
+        .container{
+            width: 1349px;
+            height: 84px;
+            padding-top: 40px;
+            padding-bottom: 12px;
+            margin:auto
+        }
+        .middle1 ul li{
+            display: inline-block;
+            height: 50px;
+
+        }
+        .middle1 img{
+            height: 50px;
+            vertical-align: middle;
+        }
+        .deloi, .micro, .schne{
+            width: 187px;
+        }
+        .deloi img{
+            width: 120px;
+        }
+        .micro img{
+            width: 135px;
+        }
+        .schne img{
+            width: 125px;
+        }
+        .wb{
+            width: 110px;
+            }
+        .wb img{
+            width: 48px;
+        }
+        .wa{width: 132px;}
+        .wa img{
+            width: 85px;
+        }
+        .eric{
+            width: 112px;
+        }
+    /* 以下为中间白色部分格式 */
+    .middle2{
+        color: black;
+        background-color: white;
+        padding-top: 40px;
+        text-align: center;
+        font-size: 14px;
+    }
+    .container2{
+        width: 1140px;
+        height: 210px;
+        padding-top: 18px;
+        padding-bottom: 19px;
+        background-color: rgb(239, 242, 245);
+        margin: auto;
+            }
+    .container2 div{
+        width: 230px;
+        height: 190px;
+        padding: 10px;
+        margin: 0 10px;
+        display: inline-block;
+        text-align: left;
+        background-color: rgb(235, 239, 244);
+
+    }
+    .container2 h5{
+        margin-top: 15px;
+        margin-bottom: 15px;
+        font-size: 16px;
+    }
+
+    /* 中间第三部分白底格式 */
+    .middle3{
+        height: 437px;
+        padding-top: 25px;
+        padding-bottom: 65px;
+        font-size: 14px;
+    }
+    .container3{
+        margin: auto;
+        width: 1140px;
+        padding-left: 15px;
+        padding-right: 15px;
+        position: relative;
+    }
+    .left3{
+        width: 440px;
+        height: 334px;
+        font-size: 15px;
+    }
+    .container3 h4{
+        font-size: 25px;
+        margin-bottom: 25px;
+
+    }
+    /* .left3 li p{
+        display: inline-block;
+        vertical-align: middle;
+    } */
+    .left3 p, li{
+        margin-bottom: 20px;
+    }
+    .left3 img{
+        padding-right: 5px;
+        vertical-align: middle;
+    }
+    .map{
+        position: absolute;
+        top: 15px;
+        right: 0px;
+        width: 635px;
+        height: 347px;
+    }
+
+    /*第6天的CSS */
+    .middleblue{
+        width: 100%;
+        background-color:#184157 ;
+        background-image: url(https://weatherstack.com/site_images/bg_waves_4.svg);
+        background-repeat: no-repeat;
+        background-position: bottom;
+        background-size: cover;
+        text-align: center;
+        color: #fff;
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+
+    .title{
+        width: 100px;
+        height: 35px;
+        border: 1px solid rgb(65, 99, 118);
+        background-color: rgb(65, 99, 118);
+        border-radius: 25px;
+        margin: auto;
+        line-height: 35px;
+        margin-bottom: 30px;
+        font-size: 14px;
+    }
+    .title2{
+        font-size: 20px;
+        margin-bottom: 20px;
+
+    }
+    h5{
+        width: 585px;
+        height: 27px;
+        margin: auto;
+        font-size: 18px;
+        font-weight: 500;
+        margin-bottom: 20px;
+
+    }
+    .topul{
+        font-size: 0px;
+        margin-bottom: 17px;
+
+    }
+    .topul li{
+        width:226px ;
+        height: 56px;
+        display: inline-block;
+        border: 1px solid #fff;
+        text-align: center;
+        background-color: #fff;
+        border-radius: 2px;
+        line-height: 56px;
+        font-size: 14px;
+        color: black;
+        border-right: #e5e5e5;
+
+    }
+    #current{
+        background-color: #F47821;
+        border: 1px solid #F47821;
+
+    }
+    pre{
+        width: 670px;
+        height: 730px;
+        margin: auto;
+        text-align: left;
+        border: 1px solid black;
+        background-color: black;
+        font-size: 16px;
+        padding: 4px;
+        color: #ffce54;
+        margin-bottom: 40px;
+
+    }
+    .feature{
+        width: 1220px;
+        margin: auto;
+        margin-bottom: 40px;
+
+    }
+    .feature li{
+        width: 30%;
+        height: 132px;
+        background-color: #657f90;
+        margin-right: 10px;
+        margin-bottom: 15px;
+        vertical-align: top;
+        text-align: left;
+        font-size: 14px;
+        border-radius: 5px;
+        display: inline-block;
+
+
+    }
+    .feature img{
+        padding: 10px;
+        vertical-align: middle;
+    }
+    .feature span{
+        font-weight: 700;
+    }
+    .feature p{
+        padding: 10px;
+        font: 18px;
+    }
+
+    /* 第7天的css */
+
+    .companies{
+            width: 100%;
+            /* height: 480px; */
+            text-align: center;
+            margin: auto;
+            padding-top: 60px;
+        }
+        .companies h4{
+            font-size: 25px;
+            font-family: Helvetica, Arial;
+            font-weight: 600;
+            margin-bottom: 28px;
+        }
+        .companies h6{
+            font-size: 20px;
+            font-family: inherit;
+            font-weight: 350;
+            width: 600px;
+            margin: auto;
+            font-family: inherit;
+
+        }
+        .companies ul{
+            width: 1140px;
+            height: 220px;
+            margin: auto;
+            margin-top: 45px;
+        }
+        .companies ul li{
+            display: inline-block;
+        }
+        .signup{
+            width: 100%;
+            height: 110px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #eef2f5;
+            margin-top: 65px;
+        }
+        .signup span{
+            font-size: 16px;
+            font-weight: 600;
+            margin-right: 10px;
+        }
+        .signup img{
+            width: 30px;
+            height: 20px;
+            margin-right: 10px;
+        }
+        .signup button{
+            width: 170px;
+            height: 50px;
+            background-color: #f47821;
+            color: #fff;
+            font-size: 12px;
+            font-weight: 770;
+            border: 1px solid #f47821;
+            border-radius: 5px;
+        }
+    /* footer 的css */
+    .footer {
+        background-color: rgb(24, 65, 87);
+        width: 100%;
+        height: 410px;
+        color: #fdfdfd;
+        overflow: hidden;
+
+    }
+    .lastcontainer{
+        width: 1140px;
+        margin: auto;
+        padding: 10px;
+        margin-top: 40px;
+    }
+    .secondcontainer{
+        display: flex;
+    }
+
+    #logo{
+        width: 200px;
+        height: 35px;
+        display: block;
+        margin-bottom: 15px;
+    }
+    .socialmedia ul{
+        width: 280px;
+
+       }
+    .socialmedia ul li{
+        display: inline-block;
+        margin-right: 10px;
+    }
+    .socialmedia ul li img{
+        width: 25px;
+        height: 25px;
+    }
+    .info {
+        width: 770px;
+        height: 260px;
+        display: flex;
+        font-size:13px ;
+        justify-content: space-around;
+    }
+    .info a{
+        text-decoration: none;
+        color: #fff;
+    }
+    .legal{
+        width: 100%;
+        text-align: center;
+        color: #fff;
+        font-size: 13px;
+    }
+    .legal li{
+        display: inline-block
+    }
+
+
+    .legal a{
+       text-decoration: none;
+       color: #fff;
+    }
+    .nav a{
+               text-decoration: none;
+       color: #fff;
+    }
+
+    </style>
+</head>
+
+<body>
+
+    <header class="top">
+        <div class="firstcontainer">
+            <div class="logo">
+                <img src="https://weatherstack.com/site_images/weatherstack_logo_white.png"  alt="logo">
+            </div>
+            <div class="nav">
+                <ul>
+                    <li><a href="./css09_yunjing_work.html">Pricing</a></li>
+                    <li>Documentation</li>
+                    <li>FAQ</li>
+                    <li>Blog</li>
+                    <li>status</li>
+                    <li>Log In</li>
+                    <li>SIGN UP FREE</li>
+                </ul>
+            </div>
+        </div>
+        <section class="weather">
+            <div class="intro">
+                <h2>Real-Time & Historical<br>
+                    World Weather Data API
+                 </h2>
+                 <h4>Retrieve instant, accurate weather information for<br>any location in the world in lightweight JSON format</h4>
+
+                <div class="comment"> <img src="/01.png" alt=""><span>Trusted by 75,000 companies worldwide</span></div>
+
+                <button>START USING THE API</button> <span>— It's free!</span>
+            </div>
+            <div class="temperature">
+                <div class="location">Tokyo, Tokyo, Japan</div>
+                <ul class="current">
+                    <li class="sky"><img src="/02.png" alt=""> <p>Sunny</p></li>
+                    <li class="number">23°c</li>
+                    <li class="wind">
+                        <span>Wind: 4 kmph<br>
+                        Precip: 0 mm<br>
+                        Pressure: 1017 mb</span>
+                     </li>
+
+                </ul>
+                <ul class="forecast">
+                    <li><p>WED</p>
+                        <img src="/02.png" alt="">
+                        <p>15°c</p>
+                    </li>
+                    <li><p>THU</p>
+                        <img src="/02.png" alt="">
+                        <p>18°c</p>
+                    </li>
+                    <li><p>FRI</p>
+                        <img src="/02.png" alt="">
+                        <p>19°c</p>
+                    </li>
+                    <li><p>SAT</p>
+                        <img src="/02.png" alt="">
+                        <p>19°c</p>
+                    </li>
+                    <li><p>SUN</p>
+                        <img src="/02.png" alt="">
+                        <p>22°c</p>
+                    </li>
+
+                </ul>
+
+            </div>
+        </section>
+
+    </header>
+
+    <div class="middle1">
+        <div class="container">
+            <ul>
+                <li> <strong>Happy Customers: &nbsp; &nbsp; &nbsp;</strong>  </li>
+                <li class="deloi"><img src="https://weatherstack.com/site_images/client_deloitte.svg" alt=""></li>
+                <li class="micro"><img src="https://weatherstack.com/site_images/client_microsoft.svg" alt=""></li>
+                <li class="wb"><img src="https://weatherstack.com/site_images/client_warnerbros.svg" alt=""></li>
+                <li class="wa"><img src="https://weatherstack.com/site_images/client_wawa.svg" alt=""></li>
+                <li class="schne"><img src="https://weatherstack.com/site_images/client_schneider.svg" alt=""></li>
+                <li class="eric"><img src="https://weatherstack.com/site_images/client_ericsson_2.svg" alt=""></li>
+            </ul>
+
+        </div>
+
+    </div>
+
+    <div class="middle2">
+        <div class="container2">
+                <div>
+                    <img src="/51.png" alt="">
+                    <h5 class="heading">Real-Time, History, Forecast</h5>
+                    <p>Our API covers global weather data across the board — from a multi-year history all the way to live information and accurate weather forecasts.</p>
+                </div>
+
+                <div>
+                    <img src="/52.png" alt="">
+                    <h5 class="heading">Millions of Locations</h5>
+                    <p>Make use of live or hour-by-hour weather data for millions of cities and towns worldwide, supporting a variety methods to look up any location.</p>
+                </div>
+
+                <div>
+                    <img src="/53.png" alt="">
+                    <h5 class="heading">Rock-Solid Uptime & Speed</h5>
+                    <p>Powered by best-in-class cloud infrastructure, our API delivers data in milliseconds around the clock with an uptime of nearly 100%.</p>
+                </div>
+
+                <div>
+                    <img src="/54.png" alt="">
+                    <h5 class="heading">Start Free, Upgrade Later</h5>
+                    <p>Start testing the API immediately by signing up for our Free Plan. You can always upgrade later — no strings attached, no credit card required.</p>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    <div class="middle3">
+        <div class="container3">
+
+            <div class="left3">
+
+                <h4>Access to Global Weather Data, Developer-friendly</h4>
+
+                <p>Get instant access to accurate weather data for any geo-point in the world and enjoy a rich set of capabilities:</p>
+
+                <ul>
+                    <li>
+                        <img src="/55.png" alt=""><span> Weather API</span>
+
+                    </li>
+                    <li>
+                        <img src="/56.png" alt=""><span> Historical Weather API</span>
+                    </li>
+                    <li>
+                        <img src="/57.png" alt=""><span> Weather Forecasts API</span>
+                    </li>
+                    <li>
+                        <img src="/58.png" alt=""><span> Location Autocomplete</span>
+                    </li>
+                    <li>
+                        <img src="/59.png" alt=""><span> Bulk API Endpoint</span>
+                    </li>
+                </ul>
+
+            </div>
+            <div class="map">
+                <img alt="World Weather Map" src="https://weatherstack.com/site_images/world_map_vector.svg" width="635" height="347">
+            </div>
+
+
+
+        </div>
+
+    </div>
+
+<!-- 第六天的html -->
+<section class="middleblue">
+    <h4 class="title">EXAMPLE</h4>
+    <h4 class="title2">Complete Weather Data Coverage</h4>
+    <h5>Get years of historical weather data, request real-time weather information or make use of accurate weather forecasts.</h5>
+    <ul class="topul">
+        <li id="current">Current Weather</li>
+        <li>Weather History</li>
+        <li>Weather Forecast</li>
+
+    </ul>
+    <div>
+         <pre>
+{
+"request": {
+    "type": "City",
+    "query": "San Francisco, United States of America",
+    "language": "en",
+    "unit": "m"
+},
+"location": {
+    "name": "San Francisco",
+    "country": "United States of America",
+    "region": "California",
+    "lat": "37.775",
+    "lon": "-122.418",
+    "timezone_id": "America/Los_Angeles",
+    "localtime": "2019-09-03 05:35",
+    "localtime_epoch": 1567488900,
+    "utc_offset": "-7.0"
+},
+"current": {
+    "observation_time": "12:35 PM",
+    "temparature": 16,
+    "weather_code": 122,
+    "weather_icons": [
+        "https://assets.weatherstack.com/images/symbol.png"
+    ],
+    "weather_descriptions": [
+        "Overcast"
+    ],
+"wind_speed": 17,
+"wind_degree": 260,
+"wind_dir": "W",
+"pressure": 1016,
+"precip": 0,
+"humidity": 87,
+"cloudcover": 100,
+"feelslike": 16,
+"uv_index": 0,
+"visibility": 16
+}
+}            </pre>
+    </div>
+    <ul class="feature">
+        <li>
+           <img src="/61.png" alt=""> <span>Reliable Data Sources</span>
+           <p>Powered by a strong backbone of data sources, our weather data API comes with the highest level of reliability, consistency and accuracy.</p>
+        </li>
+        <li>
+            <img src="/62.png" alt=""> <span>Lightning-fast Response</span>
+            <p>Weather data is delivered in lightweight JSON format to ensure a high level of speed and compatibility with any programming language.</p>
+         </li>
+         <li>
+            <img src="/63.png" alt=""> <span>Scalable Infrastructure</span>
+            <p>Our REST API is backed by scalable cloud infrastructure built and maintained by apilayer, capable of handling billions of requests per day.</p>
+         </li>
+         <li>
+            <img src="/64.png" alt=""> <span>Flexible Location Lookup</span>
+            <p>Millions of locations can be looked up by city or region name, ZIP code, IP address, or even using latitude and longitude coordinates.</p>
+         </li>
+         <li>
+            <img src="/65.png" alt=""> <span>Bank-Level Security</span>
+            <p>All data streams sent to and from the weatherstack API are secured using industry-standard 256-bit HTTPS (SSL) encryption.</p>
+         </li>
+         <li>
+            <img src="/66.png" alt=""> <span>Extensive API Documentation</span>
+            <p>An API is only as good as its documentation, which is why a series of interactive code examples in multiple languages are waiting for you.</p>
+         </li>
+
+    </ul>
+
+
+</section>
+<!-- 第7天的html -->
+    <div class="companies">
+        <h4>Join more than 75,000 companies worldwide using the weatherstack API</h4>
+        <h6>We are proud of delivering accurate weather data to some of the smartest brands out there.</h6>
+        <ul>
+            <li><img src="/71.png" alt=""></li>
+            <li><img src="/72.png" alt=""></li>
+            <li><img src="/73.png" alt=""></li>
+            <li><img src="/74.png" alt=""></li>
+            <li><img src="/75.png" alt=""></li>
+            <li><img src="/76.png" alt=""></li>
+            <li><img src="/77.png" alt=""></li>
+            <li><img src="/78.png" alt=""></li>
+            <li><img src="/79.png" alt=""></li>
+            <li><img src="/70.png" alt=""></li>
+        </ul>
+    </div>
+    <div class="signup">
+        <span>Sign up for our Free Plan to get instant access to weather data </span>
+        <img src="/arrow.png" alt="">
+        <button>GET FREE API ACCESS</button>
+    </div>
+<!-- footer 的html -->
+
+<footer class="footer">
+
+    <div class="lastcontainer">
+        <div class="secondcontainer">
+            <div class="socialmedia">
+
+                <img id="logo" src="https://weatherstack.com/site_images/weatherstack_logo_footer.png"  alt="logo">
+
+                <ul>
+                    <li>
+                        <a href="https://github.com/apilayer/weatherstack" target="_blank">
+                            <img src="https://weatherstack.com/site_images/github-original.svg" alt="加载失败">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.facebook.com/APILayer/" target="_blank">
+                            <img src="https://weatherstack.com/site_images/facebook-original.svg"  alt="加载失败">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.instagram.com/apilayer/" target="_blank">
+                            <img src="https://weatherstack.com/site_images/instagram.png" alt="加载失败">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/channel/UCwDncja3klyMhkKXWV1zoNQ" target="_blank">
+                            <img src="https://weatherstack.com/site_images/youtube.png" alt="加载失败">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/apilayer/" target="_blank">
+                            <img src="https://weatherstack.com/site_images/twitter-original.svg"  alt="加载失败">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.linkedin.com/authwall?trk=ripf&trkInfo=AQESw3_dz9mOEAAAAYMMykyAXLrKWTKL3Q6geO69ZLgKpP17rEgX7iUGjaigeEGynL1Rie-9w6to3tGsRihPBx-uPO7pGgRqEJ4FblxJDHlbg_VON-P_QB1Wzu_fRjrA8auiqyg=&original_referer=https://apilayer.com/&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fcompany%2Fapilayer%2F" target="_blank">
+                            <img src="https://weatherstack.com/site_images/linkedin-original.svg" alt="加载失败">
+                        </a>
+                    </li>
+                <ul>
+
+            </div>
+            <div class="info">
+                <ol>
+                    <li><STRONG> PRODUCT </STRONG></li>
+                    <li>
+                        <a href="#">Pricing</a>
+                    </li>
+                    <li>
+                        <a href="#">List Your API</a>
+                    </li>
+                    <li>
+                        <a href="#">Why choose us</a>
+                    </li>
+                    <li>
+                        <a href="#">Marketplace</a>
+                    </li>
+                </ol>
+
+
+                <ol>
+                    <li><STRONG> DOCS & HELP </STRONG></li>
+                    <li>
+                        <a href="#">Documentation</a>
+                    </li>
+                    <li>
+                        <a href="#">Blog</a>
+                    </li>
+                    <li>
+                        <a href="#">FAQs</a>
+                    </li>
+                    <li>
+                        <a href="#">Press</a>
+                    </li>
+                    <li>
+                        <a href="#">APT Glossary</a>
+                    </li>
+                </ol>
+
+
+                <ol>
+                    <li><STRONG> ACCOUNT </STRONG></li>
+                    <li>
+                        <a href="#">Log In</a>
+                    </li>
+                    <li>
+                        <a href="#">Forget Password</a>
+                    </li>
+                    <li>
+                        <a href="#">FREE Signup</a>
+                    </li>
+                </ol>
+
+
+                <ol>
+                    <li><STRONG> GET IN TOUCH </STRONG></li>
+                    <li>
+                        <a href="#">Contact</a>
+                    </li>
+                    <li>
+                        <a href="#">Get a quote</a>
+                    </li>
+                </ol>
+
+
+             </div>
+
+        </div>
+
+
+
+         <div class="legal">
+
+             <ul>
+                 <li>
+                 <a href="#">Imprint / Legal</a>  |
+                 </li>
+                 <li>
+                 <a href="#"> Privacy </a>  |
+                 </li>
+                 <li>
+                 <a href="#">  Terms  </a>  |
+                 </li>
+                 <li>
+                 <a href="#"> Cookie Preference</a>  |
+                 </li>
+                 <li>
+                 <a href="#"> Sitemap </a>
+                 </li>
+
+             </ul>
+             <p>&copy; 2022 Weatherstack API, an APILayer product. All rights reserved.</p>
+        </div>
+
+
+    </div>
+
+
+
+ </footer>
+</body>
+</html>

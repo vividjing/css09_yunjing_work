@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+      <style>
+        *{
+            margin: 0;
+            padding: 0;
+           }
+           ul li{
+            list-style: none;
+           }
+        .top{
+        width: 100%;
+        height: 440px;
+        background: url(https://weatherstack.com/site_images/mountains.svg),linear-gradient(135deg, #1f4e69 0, #164058 100%);
+        background-size: cover;
+        /* background-position: center; */
+        color: #fff;
+        }
+        .firstContainer {
+            width: 1145px;
+            height: 60px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            padding-top: 20px;
+            align-items: center;
+        }
+        .firstContainer img{
+            width: 202px;
+            height: 28px;
+            vertical-align: middle;
+        }
+        .firstContainer ul{
+            text-align: center;
+        }
+        .firstContainer ul li{
+            display: inline-block;
+            font-weight: 550;
+            font-size: 13px;
+            margin-right: 20px;
+            line-height: 29px;
+        }
+        .firstContainer ul li:nth-child(5)::before{
+            content: "";
+            width:10px;
+            height:10px;
+            border: 1px solid #47c652;
+            background-color: #47c652;
+            border-radius:50%;
+            margin-right: 5px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .firstContainer ul li:nth-child(6){
+            background: rgba(255,255,255,.15);
+            width: 60px;
+            height: 35px;
+            border-radius: 5px;
+        }
+        .firstContainer ul li:nth-child(7){
+            background: #f47b21;;
+            width: 102px;
+            height: 34px;
+            border-radius: 5px;
+            line-height: 34px;}
+        .priceTitle{
+            width: 420px;
+            height: 40px;
+            margin: auto;
+            text-align: center;
+            line-height: 40px;
+            color: #fff;
+            margin-top: 40px;
+        }
+        .billingOption{
+            width: 420px;
+            height: 40px;
+            margin: auto;
+            text-align: center;
+            line-height: 40px;
+            color: #fff;
+            margin-top: 20px;
+            font-size: 0px;
+
+        }
+        .billingOption input{
+            accent-color: white;
+            width: 15px;
+            height: 15px;
+            vertical-align: middle;
+        }
+        .billingOption span{
+            width: 150px;
+            height: 40px;
+            font-size: 12px;
+            background-color: #15394c;
+            display: inline-block;
+            border-radius: 3px;
+                   }
+        .billingOption span:first-child{
+            border: 1px solid #15394c;
+        }
+        .billingOption .discount{
+            border: 1px solid #fff;
+            background-color: #fff;
+            color: #2876b9;
+            position: relative;
+        }
+        .billingOption .discount::after{
+            content:"20% Discount";
+            width: 90px;
+            height: 22px;
+            line-height: 20px;
+            display: inline-block;
+            position: absolute;
+            top: -15px;
+            right: -16px;
+            color: white;
+            background-color: #8a9bae;
+            border-radius: 3px;
+            font-size: 11px;
+        }
+
+        /* 第二板块feature部分CSS */
+        .feature{
+            width: 100%;
+
+        }
+        .featureContainer{
+            width: 1145px;
+            height: 850px;
+            margin: auto;
+            display: flex;
+            justify-content: space-around;
+            margin-top: -100px;
+
+        }
+        .membership{
+            width: 212px;
+            height: 800px;
+            border-radius: 3px;
+        }
+        .membershipPrice{
+            width: 212px;
+            height: 315px;
+            background-color:#ebeff4 ;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 80px;
+            padding-top: 10px;
+        }
+        .membershipPrice img, .membershipFunction img{
+            width: 24px;
+            height: 20px;
+            vertical-align: middle;
+            margin-right: 8px;
+        }
+        .membershipPrice li:nth-child(2){
+            line-height: 20px;
+            font-size: 13px;
+            height: 70px;
+            margin-top: 15px;
+            padding: 0 5px;
+        }
+        .membershipPrice li:nth-child(3){
+            line-height: 20px;
+            font-size: 13px;
+            height: 70px;
+            margin-top: 15px;
+        }
+        .membershipPrice P{
+            color: #8d8f92;
+
+        }
+        .membershipPrice li:last-child{
+            width: 90%;
+            height: 40px;
+            background-color: #dde1e7;
+            margin: auto;
+            margin-top: 10px;
+            line-height: 40px;
+            border-radius: 5px;
+            font-weight: 600;
+
+        }
+        #professional{
+            background-color:#ffffff;
+            position: relative;
+            box-shadow: 0 1rem 3rem 0 rgba(177, 177, 177, .4);;
+
+        }
+        #professional::before{
+            content:"MOST POPULAR";
+            width: 212px;
+            height: 30px;
+            background-color: #15394c;
+            display: block;
+            position: absolute;
+            top: -30px;
+            border-radius: 5px;
+            color: #fff;
+            text-align: center;
+            line-height: 30px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        #professional li:last-child{
+            background-color: #15394c;
+            color: #fff;
+        }
+        .membershipFunction{
+            width: 202px;
+            height: 470px;
+
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 30px;
+            padding-left: 10px;
+                 }
+        #enterprise,#enterpriseOne{
+            background-color:#15394c;
+            color: #fff;
+
+        }
+        #enterpriseOne p{
+            color: #fff;
+        }
+        #enterpriseOne li:last-child{
+            background-color:#f47b21;}
+
+
+
+        /* 第二板块客户部分css */
+        .container{
+            width: 1140px;
+            height: 84px;
+            padding-top: 10px;
+            padding-bottom: 12px;
+            font-size: 13px;
+            margin: auto;
+                        }
+        .container ul li{
+            display: inline-block;
+            height: 50px;
+
+        }
+        .container img{
+            width: 1140px;
+            height: 50px;
+            vertical-align: middle;
+        }
+        .deloi, .micro, .schne{
+            width: 187px;
+        }
+        .deloi img{
+            width: 120px;
+        }
+        .micro img{
+            width: 135px;
+        }
+        .schne img{
+            width: 125px;
+        }
+        .wb{
+            width: 110px;
+            }
+        .wb img{
+            width: 48px;
+        }
+        .wa{width: 132px;}
+        .wa img{
+            width: 85px;
+        }
+
+
+
+</style>
+</head>
+<body>
+
+    <header class="top">
+        <div class="firstContainer">
+            <div class="logo">
+                <a href="./css08_yunjing_work.html"><img src="https://weatherstack.com/site_images/weatherstack_logo_white.png"  alt="logo"></a>
+            </div>
+            <div class="nav">
+                <ul>
+                    <li>Pricing</li>
+                    <li>Documentation</li>
+                    <li>FAQ</li>
+                    <li>Blog</li>
+                    <li>status</li>
+                    <li>Log In</li>
+                    <li>SIGN UP FREE</li>
+                </ul>
+            </div>
+        </div>
+        <div class="priceTitle">
+            <h2>Fair Pricing for Any Weather</h2>
+        </div>
+        <div class="billingOption">
+            <span>
+                <input type="checkbox" checked>
+                Monthly Billing
+            </span>
+            <span class="discount">
+                <input type="checkbox">
+              Yearly Billing
+            </span>
+
+        </div>
+
+
+    </header>
+    <section class="feature">
+        <div class="featureContainer">
+            <div class="membership">
+
+                   <ul class="membershipPrice">
+                     <li><img src="/1.png" alt=""> <strong>Free</strong> </li>
+                     <li>No credit card required.</li>
+                     <li><strong>$0</strong> per month</li>
+                     <li>SIGN UP</li>
+                   </ul>
+                    <ul class="membershipFunction">
+                        <li><img src="/6.png" alt="">250 Calls / mo</li>
+                        <li><img src="/7.png" alt="">No Support</li>
+                        <li><img src="/8.png" alt="">Real-Time Weather</li>
+                    </ul>
+            </div>
+            <div class="membership">
+
+                <ul class="membershipPrice">
+                  <li><img src="/2.png" alt=""> <strong>Standard</strong> </li>
+                  <li>Standard level — includes commercial use with up to 50.000 requests.</li>
+                  <li><strong>$9</strong> <sup>.99</sup>per month
+                      <p>or $7.99 if billed yearly</p>
+                  </li>
+                  <li>SIGN UP</li>
+                </ul>
+                 <ul class="membershipFunction">
+                     <li><img src="/6.png" alt="">50.000 Calls / mo</li>
+                     <li><img src="/7.png" alt="">Standard Support</li>
+                     <li><img src="/8.png" alt="">Real-Time Weather</li>
+                     <li><img src="/9.png" alt="">Location Lookup</li>
+                     <li><img src="/10.png" alt="">HTTPS Encryption</li>
+                     <li><img src="/11.png" alt="">Astronomy Data</li>
+                     <li><img src="/12.png" alt="">Hour by Hour Data</li>
+                     <li><img src="/13.png" alt="">Full Historical Data</li>
+                 </ul>
+         </div>
+         <div class="membership">
+
+            <ul class="membershipPrice" id="professional">
+              <li><img src="/3.png" alt=""> <strong>Professional</strong> </li>
+              <li>Professional level — premium features with up to 300.000 monthly requests.</li>
+              <li>
+                <strong>$49</strong><sup>.99</sup>per month
+                <p>or $39.99 if billed yearly</p>
+              </li>
+              <li>SIGN UP</li>
+            </ul>
+             <ul class="membershipFunction">
+                 <li><img src="/6.png" alt="">300.000 Calls / mo</li>
+                 <li><img src="/7.png" alt="">Standard Support</li>
+                 <li><img src="/8.png" alt="">Real-Time Weather</li>
+                 <li><img src="/9.png" alt="">Location Lookup</li>
+                 <li><img src="/10.png" alt="">HTTPS Encryption</li>
+                 <li><img src="/11.png" alt="">Astronomy Data</li>
+                 <li><img src="/12.png" alt="">Hour by Hour Data</li>
+                 <li><img src="/13.png" alt="">Full Historical Data</li>
+                 <li><img src="/14.png" alt="">7-day Forecast Data</li>
+                 <li><img src="/15.png" alt="">40 Languages</li>
+                 <li><img src="/16.png" alt="">Bulk Queries</li>
+             </ul>
+        </div>
+        <div class="membership">
+
+            <ul class="membershipPrice">
+              <li><img src="/4.png" alt=""> <strong>Business</strong> </li>
+              <li>Business level — every feature we have and up to 1.000.000 monthly requests.</li>
+              <li>
+                <strong>$99</strong><sup>.99 </sup> per month
+                <p>or $79.99 if billed yearly</p>
+              </li>
+              <li>SIGN UP</li>
+            </ul>
+             <ul class="membershipFunction">
+                <li><img src="/6.png" alt="">1.000.000 Volume Calls/ mo</li>
+                <li><img src="/7.png" alt="">Standard Support</li>
+                <li><img src="/8.png" alt="">Real-Time Weather</li>
+                <li><img src="/9.png" alt="">Location Lookup</li>
+                <li><img src="/10.png" alt="">HTTPS Encryption</li>
+                <li><img src="/11.png" alt="">Astronomy Data</li>
+                <li><img src="/12.png" alt="">Hour by Hour Data</li>
+                <li><img src="/13.png" alt="">Full Historical Data</li>
+                <li><img src="/14.png" alt="">7-day Forecast Data</li>
+                <li><img src="/15.png" alt="">40 Languages</li>
+                <li><img src="/16.png" alt="">Bulk Queries</li>
+
+             </ul>
+        </div>
+
+
+        <div class="membership" id="enterprise">
+
+            <ul class="membershipPrice" id="enterpriseOne">
+              <li><img src="/5.png" alt=""> <strong>Enterprise</strong> </li>
+              <li>Looking for more?<br>Contact us for a quote.</li>
+              <li>
+                <strong>Custom Pricing</strong>
+                <p>Tailored to your needs</p>
+              </li>
+              <li>CONTACT US</li>
+            </ul>
+             <ul class="membershipFunction">
+                <li><img src="/17.png" alt="">1.000.000 Calls / mo</li>
+                <li><img src="/18.png" alt="">Standard Support</li>
+                <li><img src="/19.png" alt="">Real-Time Weather</li>
+                <li><img src="/20.png" alt="">Location Lookup</li>
+                <li><img src="/21.png" alt="">HTTPS Encryption</li>
+                <li><img src="/22.png" alt="">Astronomy Data</li>
+                <li><img src="/23.png" alt="">Hour by Hour Data</li>
+                <li><img src="/24.png" alt="">Full Historical Data</li>
+                <li><img src="/25.png" alt="">7-day Forecast Data</li>
+                <li><img src="/26.png" alt="">40 Languages</li>
+                <li><img src="/27.png" alt="">Bulk Queries</li>
+                <li><img src="/28.png" alt="">Custom Solutions</li>
+
+             </ul>
+        </div>
+
+
+        </div>
+        <div class="container">
+                <ul>
+                    <li> <strong>Trusted by the best: &nbsp; &nbsp; &nbsp;</strong>  </li>
+                    <li class="deloi"><img src="https://weatherstack.com/site_images/client_deloitte.svg" alt=""></li>
+                    <li class="micro"><img src="https://weatherstack.com/site_images/client_microsoft.svg" alt=""></li>
+                    <li class="wb"><img src="https://weatherstack.com/site_images/client_warnerbros.svg" alt=""></li>
+                    <li class="wa"><img src="https://weatherstack.com/site_images/client_wawa.svg" alt=""></li>
+                    <li class="schne"><img src="https://weatherstack.com/site_images/client_schneider.svg" alt=""></li>
+                    <li class="wa"><img src="https://weatherstack.com/site_images/client_ericsson_2.svg" alt=""></li>
+
+                </ul>
+
+        </div>
+
+        </div>
+
+
+
+
+    </section>
+
+
+  </body>
+</html>
